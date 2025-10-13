@@ -78,7 +78,7 @@ Representa el plato giratorio del microondas.
 |:--------|:-------------|:-------------|
 | **LCD (modo 4 bits)** | PA6 (RS), PA7 (EN), PA8–PA11 (D4–D7) | Comunicación paralela |
 | **Teclado 4x4** | PB0–PB3 (Columnas), PB4–PB7 (Filas) | Escaneo por software |
-| **Displays 7 segmentos** | PC0–PC7 (segmentos), PA0–PA5 (control de dígitos) | Multiplexado |
+| **Displays 7 segmentos** | PC0–PC7 (segmentos), PA0,PA1,PA4,PA5 (control de dígitos) | Multiplexado |
 | **Motor paso a paso** | PC8, PC9, PB8, PB9 | Bobinas del 28BYJ-48 |
 | **Alimentación** | 5 V (motor/LCD), 3.3 V (lógica STM32) | Fuente externa |
 
@@ -112,34 +112,6 @@ Representa el plato giratorio del microondas.
 
 ---
 
-## 🔄 Flujo de Operación
-
-1. **Inicio del sistema**
-   - Configura GPIOs A, B y C.
-   - Inicializa LCD.
-   - Muestra `Listo`.
-
-2. **Ingreso de tiempo**
-   - Se presionan números o teclas rápidas.
-   - Muestra `Esperando *`.
-
-3. **Inicio del ciclo**
-   - Presionar `*` (start).
-   - Motor comienza a girar.
-   - Displays muestran cuenta regresiva.
-   - LCD muestra `Calentando`.
-
-4. **Finalización**
-   - Al llegar a 00:00:
-     - Motor se detiene.
-     - LCD muestra `¡Listo!`.
-
-5. **Cancelación**
-   - Presionar `E` o tecla equivalente.
-   - Motor y tiempo se reinician.
-
----
-
 ## 🧠 Notas de Uso y Ajuste
 
 - Si el motor gira al revés, invertir secuencia (4 → 3 → 2 → 1).  
@@ -147,21 +119,7 @@ Representa el plato giratorio del microondas.
 - Para más rapidez, **reducir `delay_ms()` o `motor_delay`**.  
 - El LCD requiere pausas cortas para asegurar sincronización.  
 - El multiplexado de los displays usa `delay_ms(1)` para evitar parpadeos.
-
----
-
-## 📘 Autoría y Créditos
-
-Proyecto desarrollado en lenguaje **C puro (bare-metal)** con:
-- Control directo de registros GPIO.
-- Multiplexado dinámico.
-- Comunicación LCD 4 bits.
-- Lectura de teclado matricial.
-- Control secuencial de motor paso a paso.
-
-📍 **Microcontrolador:** STM32L053R8  
-🧠 **Lenguaje:** C (sin HAL ni librerías externas)  
-⚡ **Tema:** Electrónica digital aplicada
+- El PA4 en ocasiones puede venir con valor default 0x00, asegurarse limpiar puerto antes de configuración input/output.
 
 ---
 

@@ -130,7 +130,7 @@ if (motor_delay >= 2) {
     motor_delay = 0;
     activar_motor(&motor_change);
 }
-
+```
 ---
 ### 🎥 Videos de demostración
 

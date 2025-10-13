@@ -44,7 +44,8 @@ Cada tecla tiene una función específica:
 - Muestran el tiempo restante (durante uso).  
 - Muestran la hora (en reposo).  
 - Usan **multiplexado dinámico** controlado por GPIOA y GPIOC.  
-- Formato visual: **MM:SS**.
+- Formato visual hora: **HH:MM**.
+- Formato visual tiempo restante: **MM:SS**.
 
 ---
 

@@ -136,6 +136,5 @@ if (motor_delay >= 2) {
 
 Circuito Físico:  
 [▶️ Ver video en YouTube](https://youtu.be/cY1amsQql60)
-
 Explicación Código:
 [▶️ Ver video en YouTube](https://youtu.be/DCjL8uC7vQ8)
